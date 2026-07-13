@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply min-h-screen text-white antialiased;
+  background-color: #050505;
+  background-image:
+    radial-gradient(circle at top left, rgba(34, 197, 94, 0.16), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.035), transparent 20%),
+    linear-gradient(135deg, #050505 0%, #080808 50%, #0e0e0e 100%);
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.15));
+  opacity: 0.22;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 0, transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.22;
+}
+
+* {
+  @apply box-border;
+}
+
+::selection {
+  background: rgba(34, 197, 94, 0.28);
+  color: white;
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-[20px] border border-white/10 bg-[#111111]/85 shadow-[0_8px_48px_rgba(0,0,0,0.6)] backdrop-blur-xl;
+  }
+
+  .glass-panel-soft {
+    @apply rounded-[20px] border border-white/10 bg-[#0d0d0f]/80 shadow-[0_10px_45px_rgba(0,0,0,0.5)] backdrop-blur-xl;
+  }
+
+  .page-shell {
+    @apply min-h-screen bg-transparent p-4 text-white md:p-6 lg:p-8;
+  }
+
+  .section-label {
+    @apply text-[0.7rem] uppercase tracking-[0.32em] text-zinc-500;
+  }
+
+  .input-shell {
+    @apply rounded-[16px] border border-white/10 bg-[#0b0b0d]/90 px-3 py-2.5 text-sm text-zinc-100 outline-none transition focus:border-[#22C55E]/50 focus:ring-1 focus:ring-[#22C55E]/30;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 24px rgba(34, 197, 94, 0.24);
+  }
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 999px; }
